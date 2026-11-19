@@ -5,6 +5,7 @@
 - 배포 주소: https://r2w8jp5hmn-cyber.github.io/bowl-dressing-calc/
 - 파일: `index.html` 하나 (외부 라이브러리·CDN 없음, 오프라인 동작)
 - 노션 임베드: `/embed https://r2w8jp5hmn-cyber.github.io/bowl-dressing-calc/` 또는 `/embed` → 링크 붙여넣기
+- 임베드 높이: 페이지 전체 높이가 384px 폭 기준 **A안 473px / 최대(B+논갈릭) 561px**입니다. 노션 임베드 블록은 기본 320px이라 하단 가장자리의 핸들을 아래로 끌어 **약 580px 이상**으로 늘려 두면 5종 모두 위아래 잘림 없이 보입니다.
 
 ## 기능
 
