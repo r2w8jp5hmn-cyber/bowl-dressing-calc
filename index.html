@@ -37,7 +37,7 @@
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
-  html,body{background:var(--bg)}
+  html,body{background:var(--bg);height:100%}
   body{
     margin:0;
     padding:0;
@@ -51,6 +51,9 @@
     background:var(--card);
     max-width:680px;
     margin:0 auto;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
   }
   /* ── header ───────────────────────────── */
   .head{padding:8px 11px 7px;border-bottom:1px solid var(--line-soft)}
@@ -184,7 +187,7 @@
   .recipe{padding:6px 11px 7px}
   .recipe-head{
     display:flex;align-items:center;justify-content:space-between;
-    font-size:9.5px;font-weight:600;color:var(--sub);margin-bottom:3px;
+    font-size:9.5px;font-weight:600;color:var(--sub);margin-bottom:1px;
   }
   .copy{
     border:1px solid var(--line);background:transparent;border-radius:5px;
@@ -231,6 +234,7 @@
   }
   .recipe-foot b{color:var(--ink);font-weight:700}
   footer{
+    margin-top:auto;
     padding:5px 11px 7px;border-top:1px solid var(--line-soft);
     font-size:8.5px;line-height:1.4;color:var(--sub);
   }
@@ -580,7 +584,7 @@
     m.rows.forEach(function(x){
       var share = (x.g / m.grams) * 100;
       var isZero = x.g === 0;
-      html += '<li class="row' + (isZero ? " zero" : "") + '">' +
+      html += '<li class="row' + (isZero ? " zero" : "") + '" title="' + esc(x.name) + '">' + // TEMP-TITLE
           '<span class="row-name" title="' + esc(x.name) + ' · ' + x.unit + '원/g">' + esc(x.name) + "</span>" +
           '<span class="track"><i class="fill" style="width:' + (x.g / maxG * 100).toFixed(2) + '%"></i></span>' +
           '<span class="row-g">' + grams(x.g) + "g</span>" +
