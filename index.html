@@ -307,7 +307,7 @@
     <div class="kpi lead"><span>1회 35g 원가</span><b id="kServing">243<small>원</small></b></div>
     <div class="kpi"><span>실사용 가능량</span><b id="kUsable">333<small>g</small></b></div>
     <div class="kpi clay"><span>1g당 원가</span><b id="kPerG">6.95<small>원</small></b></div>
-    <div class="kpi"><span>제공 인분 (35g)</span><b id="kServings">9<small>인분</small></b></div>
+    <div class="kpi"><span>제공 인분 (35g)</span><b id="kServings">9.5<small>인분</small></b></div>
   </div>
 
   <div class="recipe">
@@ -324,7 +324,7 @@
   </div>
 
   <footer>
-    단가는 입력된 원/g 기준이며 350g 배합을 비례 환산합니다. 토글을 켜면 총량이 배치량과 같도록 전체를 다시 환산하고, 도구 손실 5%를 뺀 양으로 1회 원가와 인분을 계산합니다.
+    단가는 입력된 원/g 기준이며 350g 배합을 비례 환산합니다. 토글을 켜면 총량이 배치량과 같도록 전체를 다시 환산하고, 도구 손실 5%를 뺀 양으로 1회 원가와 인분을 계산합니다. 원가는 2026-11-19 조사 단가 · VAT 10% 별도.
   </footer>
 </main>
 
@@ -564,7 +564,7 @@
     return {
       rows: rows, total: total, grams: state.grams, baseTotal: baseTotal,
       usable: usable, perServing: (total / usable) * SERVING,
-      perG: total / usable, servings: Math.floor(usable / SERVING)
+      perG: total / usable, servings: Math.floor(usable / SERVING * 10) / 10
     };
   }
 
@@ -602,7 +602,7 @@
     setNum($("kServing"), won(m.perServing) + "<small>원</small>");
     setNum($("kUsable"), grams(m.usable) + "<small>g</small>");
     setNum($("kPerG"), (m.perG >= 10 ? trim(m.perG.toFixed(1)) : m.perG.toFixed(2)) + "<small>원</small>");
-    setNum($("kServings"), m.servings + "<small>인분</small>");
+    setNum($("kServings"), trim(m.servings.toFixed(1)) + "<small>인분</small>");
     setNum($("fTotal"), grams(m.grams) + "g");
     setNum($("fCost"), won(m.total) + "원");
 
