@@ -196,8 +196,10 @@
   }
   .copy:hover{color:var(--ink);border-color:var(--sub)}
   ul.rows{list-style:none;margin:0;padding:0}
-  .row{padding:2.5px 0;border-top:1px solid var(--line-soft);line-height:1.25}
-  .rowin{display:flex;flex-wrap:wrap;align-items:center;gap:0 6px}
+  .row{
+    display:flex;flex-wrap:wrap;align-items:center;gap:0 6px;
+    padding:2.5px 0;border-top:1px solid var(--line-soft);line-height:1.25;
+  }
   .row:first-child{border-top:0}
   .row-name{
     flex:1 1 auto;min-width:0;font-size:11.5px;font-weight:600;
@@ -583,14 +585,12 @@
       var share = (x.g / m.grams) * 100;
       var isZero = x.g === 0;
       html += '<li class="row' + (isZero ? " zero" : "") + '">' +
-          '<div class="rowin" title="' + esc(x.name) + '">' + // TEMP-DRAG
           '<span class="row-name" title="' + esc(x.name) + ' · ' + x.unit + '원/g">' + esc(x.name) + "</span>" +
           '<span class="track"><i class="fill" style="width:' + (x.g / maxG * 100).toFixed(2) + '%"></i></span>' +
           '<span class="row-g">' + grams(x.g) + "g</span>" +
           '<span class="row-c">' + (x.cost ? won(x.cost) + "원" : "—") + "</span>" +
           '<span class="row-pct">' + pct(share) + "</span>" +
           (x.note ? '<span class="row-note">' + esc(x.note) + "</span>" : "") +
-          "</div>" +
         "</li>";
     });
     rowsEl.innerHTML = html;
